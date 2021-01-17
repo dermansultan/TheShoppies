@@ -16,6 +16,15 @@ const ResultsWrapper = styled.ul`
   }
 `;
 
+const MovieListHeader = styled.h1`
+  color: white;
+  font-weight: 600;
+  font-size: clamp(14px, 2.5vw, 25px);
+  align-self: flex-start;
+  padding-left: 14px;
+  margin: 10px 0 10px 12px
+`;
+
 function MovieList({
   moviesArr,
   nominationsArr,
@@ -28,7 +37,9 @@ function MovieList({
   }
 
   return (
+    <>
     <ResultsWrapper>
+    <MovieListHeader>Search Results</MovieListHeader>
       {moviesArr.map((movie) => (
         <MovieCard
           movie={movie}
@@ -41,6 +52,7 @@ function MovieList({
         />
       ))}
     </ResultsWrapper>
+    </>
   );
 }
 

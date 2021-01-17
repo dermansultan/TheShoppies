@@ -20,6 +20,8 @@ const NominationWrapper = styled.ul`
 `;
 const NominationTitle = styled.h1`
   color: white;
+  font-weight: 600;
+  margin-top: 10px;
   font-size: clamp(18px, 2.5vw, 25px);
 `;
 

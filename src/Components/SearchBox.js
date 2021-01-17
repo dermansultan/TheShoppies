@@ -59,6 +59,8 @@ function SearchBox({ setIsLoading, setMoviesArr, setFailure, apiKey }) {
           setIsLoading(false);
           setFailure(err.response.data.Error);
         });
+    } else {
+      setFailure(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deBouncedUserInput]);

@@ -3,6 +3,7 @@ import { PlusCircle, XCircle } from "react-feather";
 
 const MovieCardWrapper = styled.li`
   display: flex;
+  flex-direction: row-reverse;
   background-color: #1c1e24;
   border-radius: 4px;
   width: 90%;
@@ -24,6 +25,7 @@ const MovieCardHeader = styled.h2`
 const MovieDetailsWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const MovieCardBtn = styled.button`
@@ -70,12 +72,8 @@ function MovieCard({
   if (!isNominationCard && !isNominated) {
     // console.log("its not a nomination card and it is not nominated yet.");
     return (
-      <MovieCardWrapper
-        className="movieCard"
-        style={{ cursor: "pointer" }}
-        onClick={() => handleModal(movie.imdbID)}
-      >
-        <MovieDetailsWrapper>
+      <MovieCardWrapper className="movieCard" style={{ cursor: "pointer" }}>
+        <MovieDetailsWrapper onClick={() => handleModal(movie.imdbID)}>
           <MovieCardHeader primary>{movie.Title}</MovieCardHeader>
           <MovieCardHeader>{movie.Year}</MovieCardHeader>
         </MovieDetailsWrapper>
@@ -96,7 +94,7 @@ function MovieCard({
     // console.log("its not a nomination card but it nominated already");
     return (
       <MovieCardWrapper>
-        <MovieDetailsWrapper>
+        <MovieDetailsWrapper onClick={() => handleModal(movie.imdbID)}>
           <MovieCardHeader>{movie.Title}</MovieCardHeader>
           <MovieCardHeader>{movie.Year}</MovieCardHeader>
         </MovieDetailsWrapper>
@@ -111,7 +109,7 @@ function MovieCard({
     // );
     return (
       <MovieCardWrapper>
-        <MovieDetailsWrapper>
+        <MovieDetailsWrapper onClick={() => handleModal(movie.imdbID)}>
           <MovieCardHeader primary>{movie.Title}</MovieCardHeader>
           <MovieCardHeader>{movie.Year}</MovieCardHeader>
         </MovieDetailsWrapper>

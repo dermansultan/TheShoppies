@@ -54,10 +54,6 @@ const ModalP = styled.p`
   width: ${(props) => (props.bodyText ? "90%" : "")};
 `;
 
-const Btn = styled.button`
-  color: red;
-`;
-
 function MovieModal({
   handleModal,
   displayModal,
@@ -74,7 +70,6 @@ function MovieModal({
     console.log("modal was opened!");
     return (
       <ModalWrapper onClick={modalClose}>
-        <Btn onClick={modalClose}>X</Btn>
         <ModalContent>
           <ModalDetailsWrapper>
             <ModalTitle>{modalContent.Title}</ModalTitle>

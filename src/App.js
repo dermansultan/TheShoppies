@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MovieList from "./Components/MovieList";
 import MovieModal from "./Components/MovieModal";
 import NominationList from "./Components/NominationList";
@@ -20,6 +20,15 @@ const ContentWrapper = styled.div`
   }
 `;
 
+const StatusHeader = styled.h1`
+padding-top: 10px;
+  color: white;
+  font-weight: 700;
+  font-size: clamp(14px, 2.5vw, 25px);
+  min-height: 10px;
+  visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
+`;
+
 const apiKey = "55c7d734";
 
 function App() {
@@ -27,6 +36,8 @@ function App() {
   const [displayModal, setDisplayModal] = useState(false);
   // Fetched Movie Object for Modal
   const [modalContent, setModalContent] = useState("");
+  // Banner
+  const [displayBanner, setDisplayBanner] = useState("");
 
   function handleModal(id) {
     setDisplayModal(true);
@@ -54,6 +65,18 @@ function App() {
   // Nominated Movies
   const [nominationsArr, setNominationsArr] = useState([]);
 
+  useEffect(() => {
+    if (failure) {
+      setDisplayBanner(failure);
+    } else if (nominationsArr.length === 5) {
+      setDisplayBanner(
+        "Congratulations on nominating 5 movies!"
+      );
+    } else {
+      setDisplayBanner("");
+    }
+  }, [nominationsArr, failure]);
+
   return (
     <div className="App">
       <MovieModal
@@ -69,6 +92,11 @@ function App() {
         setMoviesArr={setMoviesArr}
         apiKey={apiKey}
       />
+      {displayBanner.length > 0 ? (
+        <StatusHeader failure={failure}>{displayBanner}</StatusHeader>
+      ) : (
+        <StatusHeader hidden></StatusHeader>
+      )}
       <ContentWrapper>
         <MovieList
           moviesArr={moviesArr}
