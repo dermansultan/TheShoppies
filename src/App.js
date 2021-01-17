@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import MovieList from "./Components/MovieList";
 import SearchBox from "./Components/SearchBox";
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
   // Failure Message
   const [failure, setFailure] = useState(null);
   // Nominated Movies
-  const [nominations, setNominations] = useState([]);
+  const [nominationsArr, setNominationsArr] = useState([]);
 
   return (
     <div className="App">
@@ -17,7 +18,8 @@ function App() {
         setFailure={setFailure}
         setIsLoading={setIsLoading}
         setMoviesArr={setMoviesArr}
-      ></SearchBox>
+      />
+      <MovieList moviesArr={moviesArr} nominationsArr={nominationsArr}/>
     </div>
   );
 }
