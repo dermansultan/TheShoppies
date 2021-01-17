@@ -1,43 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import useDebounce from "../Hooks/debounce";
 
-const key = "55c7d734";
-
-function SearchBox({ setIsLoading, setMoviesArr, setFailure }) {
+function SearchBox({ setIsLoading, setMoviesArr, setFailure, apiKey }) {
   // State for Input
   const [userInput, setUserInput] = useState("");
+  const deBouncedUserInput = useDebounce(userInput, 500);
 
-  function handleSubmit(e) {
-    setFailure(null);
-    e.preventDefault();
-    setIsLoading(true);
-    // use user input to queue server request
-    // axios request : get - set isloading true
-    axios
-      .get(`http://www.omdbapi.com/?apikey=${key}&s=${userInput}&type=movie`)
-      .then((res) => {
-        console.log(res);
-        setIsLoading(false);
-        if (res.data && res.data.Search) {
-          setMoviesArr(res.data.Search);
-        }
-        if (res.data && res.data.Error) {
-          setFailure(res.data.Error);
-        }
-      })
-      .catch((err) => {
-        console.log(err.response);
-        setIsLoading(false);
-        setFailure(err.response.data.Error);
-      });
-    //   then,
-    //   res = data => formatting moviesArr state,
-    //   catch = error taking the error message as failure div if (failure) show html error msg
-  }
+  useEffect(() => {
+    if (deBouncedUserInput) {
+      setFailure(null);
+      setIsLoading(true);
+      // use user input to queue server request
+      // axios request : get - set isloading true
+      axios
+        .get(`http://www.omdbapi.com/?apikey=${apiKey}&s=${userInput}&type=movie`)
+        .then((res) => {
+          console.log(res);
+          setIsLoading(false);
+          if (res.data && res.data.Search) {
+            setMoviesArr(res.data.Search);
+          }
+          if (res.data && res.data.Error) {
+            setFailure(res.data.Error);
+          }
+        })
+        .catch((err) => {
+          console.log(err.response);
+          setIsLoading(false);
+          setFailure(err.response.data.Error);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deBouncedUserInput]);
 
   return (
     <div className="searchBoxWrapper">
-      <form className="searchForm" onSubmit={handleSubmit}>
+      <form className="searchForm">
         <input
           className="searchedMovie"
           name="searchedMovie"

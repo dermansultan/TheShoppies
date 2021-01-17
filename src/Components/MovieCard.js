@@ -4,6 +4,7 @@ function MovieCard({
   isNominated,
   setNominationsArr,
   nominationsArr,
+  handleModal
 }) {
   console.log(movie);
 
@@ -24,7 +25,7 @@ function MovieCard({
   if (!isNominationCard && !isNominated) {
     // console.log("its not a nomination card and it is not nominated yet.");
     return (
-      <li className="movieCard">
+      <li className="movieCard" style={{cursor: 'pointer'}} onClick={() => handleModal(movie.imdbID)}>
         <h1 className="title">{movie.Title}</h1>
         <h2 className="year">{movie.Year}</h2>
         <button className="btn Add" onClick={() => nominateMovie()}>

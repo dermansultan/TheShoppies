@@ -1,6 +1,6 @@
 import MovieCard from "./MovieCard";
 
-function NominationList({ nominationsArr, setNominationsArr }) {
+function NominationList({ nominationsArr, setNominationsArr, handleModal }) {
   return (
     <ul className="nominationList">
       <h1>SHOPIFY</h1>
@@ -11,6 +11,7 @@ function NominationList({ nominationsArr, setNominationsArr }) {
           isNominationCard={true}
           nominationsArr={nominationsArr}
           setNominationsArr={setNominationsArr}
+          handleModal={handleModal}
         />
       ))}
     </ul>
