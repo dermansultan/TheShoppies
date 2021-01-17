@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/TheShoppies/static/css/main.6befb273.chunk.css",
+    "main.js": "/TheShoppies/static/js/main.12563971.chunk.js",
+    "main.js.map": "/TheShoppies/static/js/main.12563971.chunk.js.map",
+    "runtime-main.js": "/TheShoppies/static/js/runtime-main.b5d814da.js",
+    "runtime-main.js.map": "/TheShoppies/static/js/runtime-main.b5d814da.js.map",
+    "static/js/2.d52dbfac.chunk.js": "/TheShoppies/static/js/2.d52dbfac.chunk.js",
+    "static/js/2.d52dbfac.chunk.js.map": "/TheShoppies/static/js/2.d52dbfac.chunk.js.map",
+    "index.html": "/TheShoppies/index.html",
+    "static/css/main.6befb273.chunk.css.map": "/TheShoppies/static/css/main.6befb273.chunk.css.map",
+    "static/js/2.d52dbfac.chunk.js.LICENSE.txt": "/TheShoppies/static/js/2.d52dbfac.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b5d814da.js",
+    "static/js/2.d52dbfac.chunk.js",
+    "static/css/main.6befb273.chunk.css",
+    "static/js/main.12563971.chunk.js"
+  ]
+}
