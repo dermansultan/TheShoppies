@@ -10,8 +10,6 @@ function MovieList({ moviesArr, nominationsArr, setNominationsArr}) {
     <ul className="movieResults">
       {moviesArr.map((movie) => (
         <MovieCard
-          // title={movie.Title}
-          // year={movie.Year}
           movie={movie}
           key={movie.imdbID}
           isNominationCard={false}

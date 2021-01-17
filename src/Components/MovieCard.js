@@ -1,10 +1,24 @@
-
-function MovieCard({ movie, isNominationCard, isNominated, setNominationsArr, nominationsArr  }) {
-
-  console.log(movie)
+function MovieCard({
+  movie,
+  isNominationCard,
+  isNominated,
+  setNominationsArr,
+  nominationsArr,
+}) {
+  console.log(movie);
 
   const nominateMovie = () => {
-    setNominationsArr([...nominationsArr, movie]);
+    if (nominationsArr.length < 5) {
+      setNominationsArr([...nominationsArr, movie]);
+    }
+  };
+
+  const cancelNomination = () => {
+    console.log(nominationsArr)
+    let newArr = nominationsArr.filter(
+      (nomination) => nomination.imdbID !== movie.imdbID
+    );
+    setNominationsArr(newArr);
   };
 
   if (!isNominationCard && !isNominated) {
@@ -13,7 +27,9 @@ function MovieCard({ movie, isNominationCard, isNominated, setNominationsArr, no
       <li className="movieCard">
         <h1 className="title">{movie.Title}</h1>
         <h2 className="year">{movie.Year}</h2>
-        <button className="btn Add" onClick={() => nominateMovie()}>+</button>
+        <button className="btn Add" onClick={() => nominateMovie()}>
+          +
+        </button>
       </li>
     );
   }
@@ -21,7 +37,9 @@ function MovieCard({ movie, isNominationCard, isNominated, setNominationsArr, no
     // console.log("its not a nomination card but it nominated already");
     return (
       <li className="movieCard">
-        <h1 className="title" style={{color:'red'}}>{movie.Title}</h1>
+        <h1 className="title" style={{ color: "red" }}>
+          {movie.Title}
+        </h1>
         <h2 className="year">{movie.Year}</h2>
         {/* No button greyed out */}
         {/* <button className="btn Add">+</button> */}
@@ -36,7 +54,7 @@ function MovieCard({ movie, isNominationCard, isNominated, setNominationsArr, no
       <li className="movieCard">
         <h1 className="title">{movie.Title}</h1>
         <h2 className="year">{movie.Year}</h2>
-        <button className="btn remove">-</button>
+        <button className="btn remove" onClick={() => cancelNomination()}>-</button>
       </li>
     );
   }
