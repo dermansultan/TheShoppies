@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import MovieList from "./Components/MovieList";
+import MovieModal from "./Components/MovieModal";
 import NominationList from "./Components/NominationList";
 import SearchBox from "./Components/SearchBox";
 
@@ -9,6 +10,8 @@ const apiKey = "55c7d734";
 function App() {
   // Modal
   const [displayModal, setDisplayModal] = useState(false);
+  // Fetched Movie Object for Modal
+  const [modalContent, setModalContent] = useState("");
 
   function handleModal(id) {
     setDisplayModal(true);
@@ -16,6 +19,9 @@ function App() {
       .get(`http://www.omdbapi.com/?apikey=${apiKey}&i=${id}`)
       .then((res) => {
         console.log(res);
+        if (res.data) {
+          setModalContent(res.data);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -31,9 +37,15 @@ function App() {
   // Nominated Movies
   const [nominationsArr, setNominationsArr] = useState([]);
 
-
   return (
     <div className="App">
+      <MovieModal
+        handleModal={handleModal}
+        displayModal={displayModal}
+        modalContent={modalContent}
+        setModalContent={setModalContent}
+        setDisplayModal={setDisplayModal}
+      />
       <SearchBox
         setFailure={setFailure}
         setIsLoading={setIsLoading}
