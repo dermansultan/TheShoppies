@@ -23,7 +23,7 @@ const ContentWrapper = styled.div`
 const StatusHeader = styled.h1`
 padding-top: 10px;
   color: white;
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(14px, 2.5vw, 25px);
   min-height: 10px;
   visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
