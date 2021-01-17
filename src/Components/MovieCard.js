@@ -1,35 +1,43 @@
-function MovieCard({ title, year, isNominationCard, isNominated }) {
-    console.log(isNominationCard)
-    console.log(isNominated)
+
+function MovieCard({ movie, isNominationCard, isNominated, setNominationsArr, nominationsArr  }) {
+
+  console.log(movie)
+
+  const nominateMovie = () => {
+    setNominationsArr([...nominationsArr, movie]);
+  };
+
   if (!isNominationCard && !isNominated) {
-      console.log('its not a nomination card and it is not nominated yet.')
+    // console.log("its not a nomination card and it is not nominated yet.");
     return (
       <li className="movieCard">
-        <h1 className="title">{title}</h1>
-        <h2 className="year">{year}</h2>
-        <button className="btn Add">+</button>
+        <h1 className="title">{movie.Title}</h1>
+        <h2 className="year">{movie.Year}</h2>
+        <button className="btn Add" onClick={() => nominateMovie()}>+</button>
       </li>
     );
   }
   if (!isNominationCard && isNominated) {
-    console.log('its not a nomination card but it nominated already')
+    // console.log("its not a nomination card but it nominated already");
     return (
       <li className="movieCard">
-        <h1 className="title">{title}</h1>
-        <h2 className="year">{year}</h2>
+        <h1 className="title" style={{color:'red'}}>{movie.Title}</h1>
+        <h2 className="year">{movie.Year}</h2>
         {/* No button greyed out */}
         {/* <button className="btn Add">+</button> */}
       </li>
     );
   }
-  if(isNominationCard){
-    console.log('The movie has been nominated and this element has a remove button.')
+  if (isNominationCard) {
+    // console.log(
+    //   "The movie has been nominated and this element has a remove button."
+    // );
     return (
-        <li className="movieCard">
-          <h1 className="title">{title}</h1>
-          <h2 className="year">{year}</h2>
-          <button className="btn remove">+</button>
-        </li>
+      <li className="movieCard">
+        <h1 className="title">{movie.Title}</h1>
+        <h2 className="year">{movie.Year}</h2>
+        <button className="btn remove">-</button>
+      </li>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MovieList from "./Components/MovieList";
+import NominationList from "./Components/NominationList";
 import SearchBox from "./Components/SearchBox";
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
   // Nominated Movies
   const [nominationsArr, setNominationsArr] = useState([]);
 
+  const value = { setNominationsArr };
+
   return (
     <div className="App">
       <SearchBox
@@ -19,7 +22,8 @@ function App() {
         setIsLoading={setIsLoading}
         setMoviesArr={setMoviesArr}
       />
-      <MovieList moviesArr={moviesArr} nominationsArr={nominationsArr}/>
+      <MovieList moviesArr={moviesArr} nominationsArr={nominationsArr} setNominationsArr={setNominationsArr} />
+      <NominationList nominationsArr={nominationsArr} setNominationsArr={setNominationsArr} />
     </div>
   );
 }
