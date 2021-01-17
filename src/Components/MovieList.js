@@ -14,7 +14,7 @@ function MovieList({ moviesArr, nominationsArr }) {
           year={movie.Year}
           key={movie.imdbID}
           isNominationCard={false}
-          isNominated={() => isNominated(movie.imdbID)}
+          isNominated={isNominated(movie.imdbID)}
         />
       ))}
     </ul>
