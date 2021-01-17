@@ -14,11 +14,43 @@ function MovieModal({
 
   // Styled Components
 
-  const ModalWrapper = styled.div``;
-  const ModalContent = styled.div``;
+  const ModalWrapper = styled.div`
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+  `;
+
+  const ModalContent = styled.div`
+    padding-left: 20px;
+    position: relative;
+    background-color: #232733;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 60%;
+    max-height: 90vh;
+  `;
 
   const ModalTitle = styled.h1`
-    color: ${(props) => (props.primary ? "white" : "palevioletred")};
+    color: white;
+  `;
+
+  const ModalHeader = styled.h2`
+    color: ${(props) => (props.primary ? "white" : "#6F6C7C")};
+  `;
+
+  const ModalP = styled.p`
+    color: #6f6c7c;
+    width: ${(props) => (props.bodyText ? "90%" : "")};
   `;
 
   const Btn = styled.button`
@@ -32,11 +64,11 @@ function MovieModal({
         <Btn onClick={modalClose}>X</Btn>
         <ModalContent>
           <ModalTitle>{modalContent.Title}</ModalTitle>
-          <h2>{modalContent.Year}</h2>
-          <h2>Plot</h2>
-          <p>{modalContent.Plot}</p>
-          <p>Director: {modalContent.Director}</p>
-          <p>Featuring {modalContent.Actors}</p>
+          <ModalHeader>{modalContent.Year}</ModalHeader>
+          <ModalHeader primary>Plot</ModalHeader>
+          <ModalP bodyText>{modalContent.Plot}</ModalP>
+          <ModalP>Director {modalContent.Director}</ModalP>
+          <ModalP>Featuring {modalContent.Actors}</ModalP>
         </ModalContent>
       </ModalWrapper>
     );
