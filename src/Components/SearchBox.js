@@ -44,7 +44,6 @@ function SearchBox({ setIsLoading, setMoviesArr, setFailure, apiKey }) {
           onChange={(e) => setUserInput(e.target.value)}
           placeholder="Search for a movie to nominate!"
         ></input>
-        <button type="submit">Submoot</button>
       </form>
     </div>
   );

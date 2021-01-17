@@ -4,6 +4,13 @@ import MovieList from "./Components/MovieList";
 import MovieModal from "./Components/MovieModal";
 import NominationList from "./Components/NominationList";
 import SearchBox from "./Components/SearchBox";
+import styled from "styled-components";
+
+const ContentWrapper = styled.div`
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+`;
 
 const apiKey = "55c7d734";
 
@@ -52,6 +59,7 @@ function App() {
         setMoviesArr={setMoviesArr}
         apiKey={apiKey}
       />
+      <ContentWrapper>
       <MovieList
         moviesArr={moviesArr}
         nominationsArr={nominationsArr}
@@ -63,6 +71,7 @@ function App() {
         setNominationsArr={setNominationsArr}
         handleModal={handleModal}
       />
+      </ContentWrapper>
     </div>
   );
 }
