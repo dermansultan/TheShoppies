@@ -1,18 +1,44 @@
 import styled from "styled-components";
+import { PlusCircle, XCircle } from "react-feather";
 
 const MovieCardWrapper = styled.li`
   display: flex;
   background-color: #1c1e24;
   border-radius: 4px;
-  width: 70%;
-  margin: 20px 0 20px 15px;
+  width: 90%;
+  height: 80px;
+  align-items center;
+  padding-left: 3px;
+  margin: 14px 0 14px 15px;
+  justify-content: space-between;
+  @media (max-width: 768px){
+    height: 50px;
+  }
 `;
 
 const MovieCardHeader = styled.h2`
   color: ${(props) => (props.primary ? "white" : "#6F6C7C")};
+  font-size: clamp(14px, 2.5vw, 18px);
 `;
 
-const MovieCardBtn = styled.button``;
+const MovieDetailsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const MovieCardBtn = styled.button`
+  background-color: ${(props) => (props.remove ? "#FD3124" : "#246BFD")};
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  margin-right: 5px;
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 100%;
+    border-radius: 0;
+  }
+`;
 
 function MovieCard({
   movie,
@@ -46,11 +72,16 @@ function MovieCard({
         style={{ cursor: "pointer" }}
         onClick={() => handleModal(movie.imdbID)}
       >
-        <MovieCardHeader primary>{movie.Title}</MovieCardHeader>
-        <MovieCardHeader>{movie.Year}</MovieCardHeader>
-        <button className="btn Add" onClick={() => nominateMovie()}>
+        <MovieDetailsWrapper>
+          <MovieCardHeader primary>{movie.Title}</MovieCardHeader>
+          <MovieCardHeader>{movie.Year}</MovieCardHeader>
+        </MovieDetailsWrapper>
+        {/* <button className="btn Add" onClick={() => nominateMovie()}>
           +
-        </button>
+        </button> */}
+        <MovieCardBtn onClick={() => nominateMovie()}>
+          <PlusCircle color={"white"} size={16}></PlusCircle>
+        </MovieCardBtn>
       </MovieCardWrapper>
     );
   }
@@ -58,8 +89,10 @@ function MovieCard({
     // console.log("its not a nomination card but it nominated already");
     return (
       <MovieCardWrapper>
-        <MovieCardHeader>{movie.Title}</MovieCardHeader>
-        <MovieCardHeader>{movie.Year}</MovieCardHeader>
+        <MovieDetailsWrapper>
+          <MovieCardHeader>{movie.Title}</MovieCardHeader>
+          <MovieCardHeader>{movie.Year}</MovieCardHeader>
+        </MovieDetailsWrapper>
         {/* No button greyed out */}
         {/* <button className="btn Add">+</button> */}
       </MovieCardWrapper>
@@ -71,11 +104,13 @@ function MovieCard({
     // );
     return (
       <MovieCardWrapper>
-        <MovieCardHeader primary>{movie.Title}</MovieCardHeader>
-        <MovieCardHeader>{movie.Year}</MovieCardHeader>
-        <button className="btn remove" onClick={() => cancelNomination()}>
-          -
-        </button>
+        <MovieDetailsWrapper>
+          <MovieCardHeader primary>{movie.Title}</MovieCardHeader>
+          <MovieCardHeader>{movie.Year}</MovieCardHeader>
+        </MovieDetailsWrapper>
+        <MovieCardBtn remove onClick={() => cancelNomination()}>
+          <XCircle color={"white"} size={16}></XCircle>
+        </MovieCardBtn>
       </MovieCardWrapper>
     );
   }

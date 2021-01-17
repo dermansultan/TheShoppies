@@ -9,7 +9,14 @@ import styled from "styled-components";
 const ContentWrapper = styled.div`
   display: flex;
   width: 80%;
+  padding-top: 10vh;
   justify-content: space-around;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 5vh;
+  }
 `;
 
 const apiKey = "55c7d734";
@@ -60,17 +67,17 @@ function App() {
         apiKey={apiKey}
       />
       <ContentWrapper>
-      <MovieList
-        moviesArr={moviesArr}
-        nominationsArr={nominationsArr}
-        setNominationsArr={setNominationsArr}
-        handleModal={handleModal}
-      />
-      <NominationList
-        nominationsArr={nominationsArr}
-        setNominationsArr={setNominationsArr}
-        handleModal={handleModal}
-      />
+        <MovieList
+          moviesArr={moviesArr}
+          nominationsArr={nominationsArr}
+          setNominationsArr={setNominationsArr}
+          handleModal={handleModal}
+        />
+        <NominationList
+          nominationsArr={nominationsArr}
+          setNominationsArr={setNominationsArr}
+          handleModal={handleModal}
+        />
       </ContentWrapper>
     </div>
   );

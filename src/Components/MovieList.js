@@ -4,10 +4,13 @@ import styled from "styled-components";
 const ResultsWrapper = styled.ul`
   background-color: #232733;
   border-radius: 30px;
-  width: 50%;
+  width: 70%;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 function MovieList({
