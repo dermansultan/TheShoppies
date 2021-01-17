@@ -9,7 +9,7 @@ const MovieCardWrapper = styled.li`
   height: 80px;
   align-items center;
   padding-left: 3px;
-  margin: 14px 0 14px 15px;
+  margin: 5px 0 8px 14px;
   justify-content: space-between;
   @media (max-width: 768px){
     height: 50px;
@@ -27,6 +27,9 @@ const MovieDetailsWrapper = styled.div`
 `;
 
 const MovieCardBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${(props) => (props.remove ? "#FD3124" : "#246BFD")};
   width: 40px;
   height: 40px;
@@ -80,7 +83,11 @@ function MovieCard({
           +
         </button> */}
         <MovieCardBtn onClick={() => nominateMovie()}>
-          <PlusCircle color={"white"} size={16}></PlusCircle>
+          <PlusCircle
+            color={"white"}
+            style={{ alignSelf: "center" }}
+            size={16}
+          ></PlusCircle>
         </MovieCardBtn>
       </MovieCardWrapper>
     );
@@ -109,7 +116,11 @@ function MovieCard({
           <MovieCardHeader>{movie.Year}</MovieCardHeader>
         </MovieDetailsWrapper>
         <MovieCardBtn remove onClick={() => cancelNomination()}>
-          <XCircle color={"white"} size={16}></XCircle>
+          <XCircle
+            color={"white"}
+            style={{ alignSelf: "center" }}
+            size={16}
+          ></XCircle>
         </MovieCardBtn>
       </MovieCardWrapper>
     );

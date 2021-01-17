@@ -5,6 +5,7 @@ const NominationWrapper = styled.ul`
   align-self: flex-start;
   background-color: #232733;
   border-radius: 30px;
+  height: 85%;
   width: 30%;
   display: flex;
   align-items: center;
@@ -14,11 +15,12 @@ const NominationWrapper = styled.ul`
     align-self: center;
     margin-left: 0;
     margin-top: 10px;
-    width: 70%;
+    width: 100%;
   }
 `;
 const NominationTitle = styled.h1`
   color: white;
+  font-size: clamp(18px, 2.5vw, 25px);
 `;
 
 function NominationList({ nominationsArr, setNominationsArr, handleModal }) {

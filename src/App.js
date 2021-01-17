@@ -9,6 +9,7 @@ import styled from "styled-components";
 const ContentWrapper = styled.div`
   display: flex;
   width: 80%;
+  height: 100%;
   padding-top: 10vh;
   justify-content: space-around;
   @media (max-width: 768px) {
@@ -35,6 +36,8 @@ function App() {
         console.log(res);
         if (res.data) {
           setModalContent(res.data);
+        } else {
+          setDisplayModal(false);
         }
       })
       .catch((err) => {

@@ -23,20 +23,34 @@ const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 60%;
-  max-height: 90vh;
+  width: 50%;
+    justify-content: space-evenly;
+    min-height: 30vh;
+}
+  @media (max-width: 768px) {
+    width: 80%;
+    min-height: 25vw;
+  }
+`;
+
+const ModalDetailsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const ModalTitle = styled.h1`
   color: white;
+  font-size: clamp(14px, 2.5vw, 25px);
 `;
 
 const ModalHeader = styled.h2`
   color: ${(props) => (props.primary ? "white" : "#6F6C7C")};
+  font-size: clamp(14px, 2.5vw, 20px);
 `;
 
 const ModalP = styled.p`
   color: #6f6c7c;
+  font-size: clamp(14px, 2.5vw, 18px);
   width: ${(props) => (props.bodyText ? "90%" : "")};
 `;
 
@@ -62,12 +76,18 @@ function MovieModal({
       <ModalWrapper onClick={modalClose}>
         <Btn onClick={modalClose}>X</Btn>
         <ModalContent>
-          <ModalTitle>{modalContent.Title}</ModalTitle>
-          <ModalHeader>{modalContent.Year}</ModalHeader>
-          <ModalHeader primary>Plot</ModalHeader>
-          <ModalP bodyText>{modalContent.Plot}</ModalP>
-          <ModalP>Director {modalContent.Director}</ModalP>
-          <ModalP>Featuring {modalContent.Actors}</ModalP>
+          <ModalDetailsWrapper>
+            <ModalTitle>{modalContent.Title}</ModalTitle>
+            <ModalHeader>{modalContent.Year}</ModalHeader>
+          </ModalDetailsWrapper>
+          <ModalDetailsWrapper>
+            <ModalHeader primary>Plot</ModalHeader>
+            <ModalP bodyText>{modalContent.Plot}</ModalP>
+          </ModalDetailsWrapper>
+          <ModalDetailsWrapper>
+            <ModalP>Director {modalContent.Director}</ModalP>
+            <ModalP>Featuring {modalContent.Actors}</ModalP>
+          </ModalDetailsWrapper>
         </ModalContent>
       </ModalWrapper>
     );

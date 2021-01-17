@@ -2,11 +2,14 @@ import MovieCard from "./MovieCard";
 import styled from "styled-components";
 
 const ResultsWrapper = styled.ul`
+  padding-top: 10px;
   background-color: #232733;
   border-radius: 30px;
+  height: 85%;
   width: 70%;
   display: flex;
-  align-items: flex-start;
+  overflow-y: auto;
+  align-items: center;
   flex-direction: column;
   @media (max-width: 768px) {
     width: 100%;

@@ -73,6 +73,7 @@ function SearchBox({ setIsLoading, setMoviesArr, setFailure, apiKey }) {
       {/* <form className="searchForm"> */}
       <SearchForm>
         <SearchInput
+          autoComplete={'off'}
           className="searchedMovie"
           name="searchedMovie"
           value={userInput}
