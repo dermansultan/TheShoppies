@@ -63,11 +63,9 @@ function MovieModal({
 }) {
   const modalClose = () => {
     setDisplayModal(false);
-    console.log("modal was closed!");
   };
 
   if (displayModal) {
-    console.log("modal was opened!");
     return (
       <ModalWrapper onClick={modalClose}>
         <ModalContent>

@@ -53,8 +53,6 @@ function MovieCard({
   nominationsArr,
   handleModal,
 }) {
-  console.log(movie);
-
   const nominateMovie = () => {
     if (nominationsArr.length < 5) {
       setNominationsArr([...nominationsArr, movie]);
@@ -62,7 +60,6 @@ function MovieCard({
   };
 
   const cancelNomination = () => {
-    console.log(nominationsArr);
     let newArr = nominationsArr.filter(
       (nomination) => nomination.imdbID !== movie.imdbID
     );
@@ -70,16 +67,12 @@ function MovieCard({
   };
 
   if (!isNominationCard && !isNominated) {
-    // console.log("its not a nomination card and it is not nominated yet.");
     return (
       <MovieCardWrapper className="movieCard" style={{ cursor: "pointer" }}>
         <MovieDetailsWrapper onClick={() => handleModal(movie.imdbID)}>
           <MovieCardHeader primary>{movie.Title}</MovieCardHeader>
           <MovieCardHeader>{movie.Year}</MovieCardHeader>
         </MovieDetailsWrapper>
-        {/* <button className="btn Add" onClick={() => nominateMovie()}>
-          +
-        </button> */}
         <MovieCardBtn onClick={() => nominateMovie()}>
           <PlusCircle
             color={"white"}
@@ -91,22 +84,16 @@ function MovieCard({
     );
   }
   if (!isNominationCard && isNominated) {
-    // console.log("its not a nomination card but it nominated already");
     return (
       <MovieCardWrapper>
         <MovieDetailsWrapper onClick={() => handleModal(movie.imdbID)}>
           <MovieCardHeader>{movie.Title}</MovieCardHeader>
           <MovieCardHeader>{movie.Year}</MovieCardHeader>
         </MovieDetailsWrapper>
-        {/* No button greyed out */}
-        {/* <button className="btn Add">+</button> */}
       </MovieCardWrapper>
     );
   }
   if (isNominationCard) {
-    // console.log(
-    //   "The movie has been nominated and this element has a remove button."
-    // );
     return (
       <MovieCardWrapper>
         <MovieDetailsWrapper onClick={() => handleModal(movie.imdbID)}>

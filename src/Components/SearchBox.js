@@ -18,7 +18,7 @@ const SearchForm = styled.form`
   width: 100%;
 `;
 
-const SearchInput = styled.input` 
+const SearchInput = styled.input`
   align-self: center;
   width: 100%;
   color: #6f6c7c;
@@ -45,7 +45,6 @@ function SearchBox({ setIsLoading, setMoviesArr, setFailure, apiKey }) {
           `https://www.omdbapi.com/?apikey=${apiKey}&s=${userInput}&type=movie`
         )
         .then((res) => {
-          console.log(res);
           setIsLoading(false);
           if (res.data && res.data.Search) {
             setMoviesArr(res.data.Search);
@@ -55,7 +54,6 @@ function SearchBox({ setIsLoading, setMoviesArr, setFailure, apiKey }) {
           }
         })
         .catch((err) => {
-          console.log(err.response);
           setIsLoading(false);
           setFailure(err.response.data.Error);
         });
@@ -75,7 +73,7 @@ function SearchBox({ setIsLoading, setMoviesArr, setFailure, apiKey }) {
       {/* <form className="searchForm"> */}
       <SearchForm>
         <SearchInput
-          autoComplete={'off'}
+          autoComplete={"off"}
           className="searchedMovie"
           name="searchedMovie"
           value={userInput}
