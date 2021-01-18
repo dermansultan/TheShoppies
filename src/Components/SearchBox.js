@@ -42,7 +42,7 @@ function SearchBox({ setIsLoading, setMoviesArr, setFailure, apiKey }) {
       // axios request : get - set isloading true
       axios
         .get(
-          `http://www.omdbapi.com/?apikey=${apiKey}&s=${userInput}&type=movie`
+          `https://www.omdbapi.com/?apikey=${apiKey}&s=${userInput}&type=movie`
         )
         .then((res) => {
           console.log(res);

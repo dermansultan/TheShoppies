@@ -42,7 +42,7 @@ function App() {
   function handleModal(id) {
     setDisplayModal(true);
     axios
-      .get(`http://www.omdbapi.com/?apikey=${apiKey}&i=${id}`)
+      .get(`https://www.omdbapi.com/?apikey=${apiKey}&i=${id}`)
       .then((res) => {
         console.log(res);
         if (res.data) {
